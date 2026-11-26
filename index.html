@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#160b29">
+    <title>Marjona — Sehrli tabrik</title>
+    <link rel="stylesheet" href="styl.css">
+    <script src="sasas.js" defer></script>
+</head>
+<body data-theme="0">
+
+    <canvas id="effects"></canvas>
+    <div id="ambient"></div>
+
+    <button id="musicBtn" class="music" aria-label="Musiqani yoqish">
+        ♫
+    </button>
+
+    <!-- Boshlanish -->
+    <section id="intro" class="intro">
+        <span class="eyebrow">SEN UCHUN MAXSUS</span>
+
+        <h1>Sehrli maktub</h1>
+
+        <button id="openBtn" class="envelope" aria-label="Maktubni ochish">
+            <span class="paper"></span>
+            <span class="fold"></span>
+            <span class="flap"></span>
+            <span class="seal">✦</span>
+        </button>
+
+        <p>Har bir sahifada bir go‘zal tilak...</p>
+        <span class="hint">Maktubni ochish uchun bos</span>
+    </section>
+
+    <!-- Oltita varaq -->
+    <main id="book" hidden>
+
+        <div id="decoration" class="decoration"></div>
+
+        <article id="page" class="page">
+            <div class="corner top-left">✧</div>
+            <div class="corner top-right">✧</div>
+            <div class="corner bottom-left">✧</div>
+            <div class="corner bottom-right">✧</div>
+
+            <span id="pageNumber" class="eyebrow"></span>
+
+            <div id="symbol" class="symbol"></div>
+
+            <h2 id="pageTitle"></h2>
+            <div class="ornament">──── ✦ ────</div>
+            <p id="message"></p>
+
+            <div id="dots" class="dots"></div>
+
+            <div class="navigation">
+                <button id="prevBtn" class="secondary">←</button>
+                <button id="nextBtn">Keyingi sahifa →</button>
+            </div>
+        </article>
+
+    </main>
+
+    <audio id="music" src="music.mp3" loop preload="none"></audio>
+
+</body>
+</html>

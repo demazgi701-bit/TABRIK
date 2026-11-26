@@ -1,0 +1,447 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --accent: #ffd7a0;
+    --glass: #ffffff12;
+    --bg: radial-gradient(ellipse at bottom,
+        #63264f, #240e36 55%, #090411);
+}
+
+body {
+    min-height: 100dvh;
+    overflow-x: hidden;
+    background: #090411;
+    color: #fff;
+    font-family: Georgia, 'Times New Roman', serif;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+/* HAR BIR SAHIFANING O'ZIGA XOS FONI */
+
+body[data-theme="0"] {
+    --bg: radial-gradient(ellipse at bottom,
+        #963d72, #35123f 55%, #100519);
+    --accent: #ffd0e5;
+}
+
+body[data-theme="1"] {
+    --bg: radial-gradient(ellipse at bottom,
+        #314b91, #171d50 55%, #030615);
+    --accent: #d0e3ff;
+}
+
+body[data-theme="2"] {
+    --bg: radial-gradient(ellipse at bottom,
+        #b85c8a, #63344e 55%, #251122);
+    --accent: #ffe1e8;
+}
+
+body[data-theme="3"] {
+    --bg: radial-gradient(ellipse at bottom,
+        #a46e30, #452544 55%, #10091d);
+    --accent: #ffe0a0;
+}
+
+body[data-theme="4"] {
+    --bg: radial-gradient(ellipse at bottom,
+        #227b83, #123e4a 55%, #031419);
+    --accent: #b7fff1;
+}
+
+body[data-theme="5"] {
+    --bg: radial-gradient(ellipse at bottom,
+        #713052, #24113d 55%, #070311);
+    --accent: #ffdfa0;
+}
+
+/* ORQA FON */
+
+#ambient {
+    position: fixed;
+    inset: 0;
+    background: var(--bg);
+    z-index: -2;
+}
+
+#effects {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.intro, #book {
+    min-height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 65px 20px 35px;
+}
+
+.eyebrow {
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    letter-spacing: 5px;
+    color: var(--accent);
+}
+
+h1 {
+    font-size: clamp(35px, 8vw, 75px);
+    color: var(--accent);
+    margin-top: 20px;
+    text-shadow: 0 0 35px #ffffff55;
+}
+
+.intro p {
+    font-size: 19px;
+    line-height: 1.7;
+}
+
+.hint {
+    margin-top: 15px;
+    font-size: 13px;
+    opacity: .6;
+}
+
+/* SEHRLI KONVERT */
+
+.envelope {
+    width: 260px;
+    height: 175px;
+    position: relative;
+    background: linear-gradient(135deg,
+        #df9ab8, #a84e7d);
+    border: 1px solid #ffd9ea;
+    border-radius: 8px;
+    box-shadow: 0 0 70px #ff8bc477;
+    margin: 70px 0 45px;
+    padding: 0;
+    perspective: 900px;
+    animation: floating 4s ease-in-out infinite;
+}
+
+.paper {
+    position: absolute;
+    width: 84%;
+    height: 92%;
+    top: 4%;
+    left: 8%;
+    background: #fff4df;
+    border-radius: 5px;
+    transition: transform 1s;
+}
+
+.fold {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg,
+        #f6b7ce, #cc7a9f);
+    clip-path: polygon(
+        0 0, 50% 50%, 100% 0,
+        100% 100%, 0 100%
+    );
+}
+
+.flap {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        #ffe4ed, #d88cad
+    );
+    clip-path: polygon(0 0, 100% 0, 50% 65%);
+    transform-origin: top;
+    transition: transform .8s;
+}
+
+.seal {
+    position: absolute;
+    left: 50%;
+    top: 47%;
+    transform: translateX(-50%);
+    width: 46px;
+    height: 46px;
+    line-height: 46px;
+    font-size: 25px;
+    border-radius: 50%;
+    color: #ffe2a7;
+    background: #962d55;
+    box-shadow: 0 0 20px #ffbd7d;
+    transition: opacity .4s;
+}
+
+.envelope.open .flap {
+    transform: rotateX(180deg);
+}
+
+.envelope.open .seal {
+    opacity: 0;
+}
+
+.envelope.open .paper {
+    transform: translateY(-95px);
+}
+
+@keyframes floating {
+    50% {
+        transform: translateY(-14px);
+    }
+}
+
+/* MAKTUB SAHIFALARI */
+
+.page {
+    position: relative;
+    width: min(100%, 530px);
+    min-height: 490px;
+    padding: 35px 28px;
+    border: 1px solid var(--accent);
+    border-radius: 24px;
+    background: linear-gradient(
+        145deg, #ffffff20, #ffffff06
+    );
+    backdrop-filter: blur(14px);
+    box-shadow:
+        0 0 70px #00000055,
+        inset 0 0 35px #ffffff08;
+    animation: pageEnter .85s both;
+}
+
+/* Har bir varaqning alohida shakli */
+
+body[data-theme="0"] .page {
+    border: 3px double #ffd0e5;
+    border-radius: 12px;
+}
+
+body[data-theme="1"] .page {
+    border-radius: 180px 180px 24px 24px;
+}
+
+body[data-theme="2"] .page {
+    border-radius: 70px 15px 70px 15px;
+    background: #ffb6d224;
+}
+
+body[data-theme="3"] .page {
+    border: 3px double #ffdfa0;
+    border-radius: 8px;
+    background: #e7b46b16;
+}
+
+body[data-theme="4"] .page {
+    border-radius: 35px;
+    box-shadow: 0 0 55px #63ffca22;
+}
+
+body[data-theme="5"] .page {
+    border-radius: 30px;
+    box-shadow: 0 0 80px #ffc57133;
+    border: 3px double #ffdfa0;
+}
+
+.page.enter {
+    animation: pageEnter .85s both;
+}
+
+@keyframes pageEnter {
+    from {
+        opacity: 0;
+        transform: perspective(1000px)
+            rotateY(-35deg) translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: perspective(1000px)
+            rotateY(0) translateY(0);
+    }
+}
+
+.corner {
+    position: absolute;
+    font-size: 25px;
+    color: var(--accent);
+}
+
+.top-left { top: 12px; left: 15px; }
+.top-right { top: 12px; right: 15px; }
+.bottom-left { bottom: 12px; left: 15px; }
+.bottom-right { bottom: 12px; right: 15px; }
+
+.symbol {
+    font-size: 65px;
+    margin: 24px 0 15px;
+    filter: drop-shadow(0 0 18px var(--accent));
+    animation: floating 3.5s infinite;
+}
+
+h2 {
+    font-size: clamp(28px, 6vw, 43px);
+    color: var(--accent);
+    font-weight: normal;
+}
+
+.ornament {
+    color: var(--accent);
+    margin: 18px 0;
+    letter-spacing: 5px;
+}
+
+#message {
+    min-height: 150px;
+    font-size: clamp(17px, 4vw, 21px);
+    line-height: 1.8;
+    white-space: pre-line;
+}
+
+/* TUGMALAR */
+
+button {
+    cursor: pointer;
+    font-family: inherit;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.navigation {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.navigation button {
+    border: none;
+    padding: 14px 22px;
+    border-radius: 40px;
+    background: var(--accent);
+    color: #392237;
+    font-size: 14px;
+    box-shadow: 0 0 22px #ffffff22;
+    transition: transform .2s;
+}
+
+.navigation button:active {
+    transform: scale(.94);
+}
+
+.navigation .secondary {
+    background: #ffffff15;
+    color: white;
+    border: 1px solid #ffffff30;
+}
+
+button:disabled {
+    opacity: .3;
+    cursor: default;
+}
+
+.dots {
+    display: flex;
+    justify-content: center;
+    gap: 9px;
+    margin-top: 20px;
+}
+
+.dot {
+    width: 7px;
+    height: 7px;
+    background: #ffffff30;
+    border-radius: 50%;
+    transition: .4s;
+}
+
+.dot.active {
+    width: 24px;
+    border-radius: 10px;
+    background: var(--accent);
+    box-shadow: 0 0 12px var(--accent);
+}
+
+.music {
+    position: fixed;
+    right: 18px;
+    top: 18px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid #ffffff55;
+    background: #ffffff12;
+    color: white;
+    font-size: 23px;
+    z-index: 10;
+}
+
+.music.playing {
+    color: #ffe1a8;
+    box-shadow: 0 0 20px #ffe1a855;
+}
+
+/* ORQA FONDAGI BEZAKLAR */
+
+.decoration {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.floating-item {
+    position: absolute;
+    animation: rise linear infinite;
+    opacity: 0;
+}
+
+@keyframes rise {
+    0% {
+        transform: translateY(110vh) rotate(0deg);
+        opacity: 0;
+    }
+
+    15%, 80% {
+        opacity: .65;
+    }
+
+    100% {
+        transform: translateY(-20vh) rotate(140deg);
+        opacity: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .page {
+        padding: 30px 23px;
+        min-height: 450px;
+    }
+
+    .envelope {
+        width: 235px;
+        height: 155px;
+    }
+
+    .eyebrow {
+        letter-spacing: 3px;
+    }
+
+    .symbol {
+        font-size: 50px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+}
